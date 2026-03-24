@@ -1,2 +1,33 @@
+import java.util.ArrayList;
+
 public class TrainConsistManagementApp {
+
+    public static void main(String[] args) {
+
+        ArrayList<String> passengerBogies = new ArrayList<>();
+
+        System.out.println("=====================================");
+        System.out.println(" UC2 - Add Passenger Bogies to Train ");
+        System.out.println("=====================================");
+
+        passengerBogies.add("Sleeper");
+        passengerBogies.add("AC Chair");
+        passengerBogies.add("First Class");
+
+        System.out.println("After Adding Bogies:");
+        System.out.println("Passenger Bogies: " + passengerBogies + "\n");
+
+        passengerBogies.remove("AC Chair");
+
+        System.out.println("After Removing 'AC Chair':");
+        System.out.println("Passenger Bogies: " + passengerBogies + "\n");
+
+        System.out.println("Checking if 'Sleeper' exists:");
+        System.out.println("Contains 'Sleeper'? " + passengerBogies.contains("Sleeper") + "\n");
+
+        System.out.println("Final Train Passenger Consist:");
+        System.out.println(passengerBogies + "\n");
+
+        System.out.println("All passenger operations completed successfully.");
+    }
 }
