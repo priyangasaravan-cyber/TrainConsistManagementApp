@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class TrainConsistManagementApp {
 
@@ -21,7 +20,7 @@ public class TrainConsistManagementApp {
 
     public static void main(String[] args) {
         System.out.println("==============================================");
-        System.out.println(" UC8 Filter Passenger Bogies Using Streams");
+        System.out.println(" UC9 Calculate Total Capacity (Streams) ");
         System.out.println("==============================================");
 
         List<Bogie> bogies = new ArrayList<>();
@@ -30,16 +29,15 @@ public class TrainConsistManagementApp {
         bogies.add(new Bogie("First Class", 24));
         bogies.add(new Bogie("General", 90));
 
-        System.out.println("All Bogies:");
+        System.out.println("\nAll Bogies:");
         bogies.forEach(System.out::println);
 
-        List<Bogie> filteredBogies = bogies.stream()
-                .filter(b -> b.capacity > 60)
-                .collect(Collectors.toList());
+        int totalCapacity = bogies.stream()
+                .mapToInt(b -> b.capacity)
+                .sum();
 
-        System.out.println("\nFiltered Bogies (Capacity > 60):");
-        filteredBogies.forEach(System.out::println);
+        System.out.println("\nTotal Passenger Capacity: " + totalCapacity);
 
-        System.out.println("\nUC8 filtering completed...");
+        System.out.println("\nUC9 calculation completed...");
     }
 }
