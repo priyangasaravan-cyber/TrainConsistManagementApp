@@ -20,7 +20,7 @@ public class TrainConsistManagementApp {
 
     public static void main(String[] args) {
         System.out.println("==============================================");
-        System.out.println(" UC9 Calculate Total Capacity (Streams) ");
+        System.out.println(" UC10 Count Total Seats in Train (reduce) ");
         System.out.println("==============================================");
 
         List<Bogie> bogies = new ArrayList<>();
@@ -32,12 +32,12 @@ public class TrainConsistManagementApp {
         System.out.println("\nAll Bogies:");
         bogies.forEach(System.out::println);
 
-        int totalCapacity = bogies.stream()
-                .mapToInt(b -> b.capacity)
-                .sum();
+        int totalSeats = bogies.stream()
+                .map(b -> b.capacity)
+                .reduce(0, (a, b) -> a + b);
 
-        System.out.println("\nTotal Passenger Capacity: " + totalCapacity);
+        System.out.println("\nTotal Seating Capacity (Calculated via reduce): " + totalSeats);
 
-        System.out.println("\nUC9 calculation completed...");
+        System.out.println("\nUC10 reduction completed...");
     }
 }
