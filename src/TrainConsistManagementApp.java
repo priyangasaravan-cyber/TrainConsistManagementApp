@@ -1,52 +1,48 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
-
-public class TrainConsistManagementApp{
-
-
-    static class InvalidCapacityException extends Exception {
-        public InvalidCapacityException(String message) {
-            super(message); // [cite: 318]
-        }
-    }
-
-
-    static class PassengerBogie {
-        String type;
-        int capacity;
-
-        PassengerBogie(String type, int capacity) throws InvalidCapacityException {
-            if (capacity <= 0) {
-                throw new InvalidCapacityException("Capacity must be greater than zero");
-            }
-            this.type = type;
-            this.capacity = capacity;
-        }
-
-        @Override
-        public String toString() {
-            return "Created Bogie " + type + " -> " + capacity;
-        }
-    }
+public class TrainConsistManagementApp {
 
     public static void main(String[] args) {
-        System.out.println("==================================================");
-        System.out.println(" UC14 - Handle Invalid Bogie Capacity ");
-        System.out.println("==================================================");
+        System.out.println("==========================================");
+        System.out.println(" UC19 - Binary Search For Bogie ID ");
+        System.out.println("==========================================\n");
 
-        try {
-            PassengerBogie validBogie = new PassengerBogie("Sleeper", 72);
-            System.out.println(validBogie);
+        String[] bogieIds = {"B6101", "B6205", "B6309", "B6412", "B6550"};
 
-            PassengerBogie invalidBogie = new PassengerBogie("AC Chair", 0);
-            System.out.println(invalidBogie);
+        Arrays.sort(bogieIds);
 
-        } catch (InvalidCapacityException e) {
+        String key = "B6309";
 
-            System.err.println("Error: " + e.getMessage());
+        System.out.println("Sorted Bogie IDs:");
+        for (String id : bogieIds) {
+            System.out.println(id);
+        }
+        System.out.println();
+
+        int low = 0;
+        int high = bogieIds.length - 1;
+        boolean found = false;
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+
+            int comparison = key.compareTo(bogieIds[mid]);
+
+            if (comparison == 0) {
+                System.out.println("Bogie " + key + " found using Binary Search.");
+                found = true;
+                break;
+            } else if (comparison > 0) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
         }
 
-        System.out.println("\nUC14 exception handling completed...");
+        if (!found) {
+            System.out.println("Bogie " + key + " not found.");
+        }
+
+        System.out.println("\nUC19 search completed...");
     }
 }
