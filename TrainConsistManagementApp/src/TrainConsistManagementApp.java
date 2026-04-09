@@ -1,4 +1,3 @@
-
 public class TrainConsistManagementApp {
 
     static class CargoSafetyException extends RuntimeException {
@@ -20,13 +19,11 @@ public class TrainConsistManagementApp {
                 if (this.shape.equalsIgnoreCase("Rectangular") && cargo.equalsIgnoreCase("Petroleum")) {
                     throw new CargoSafetyException("Unsafe cargo assignment!");
                 }
-
                 this.cargo = cargo;
                 System.out.println("Cargo assigned successfully -> " + cargo);
 
             } catch (CargoSafetyException e) {
                 System.out.println("Error: " + e.getMessage());
-
             } finally {
                 System.out.println("Cargo validation completed for " + this.shape + " bogie");
             }
@@ -38,13 +35,13 @@ public class TrainConsistManagementApp {
         System.out.println("UC15 - Safe Cargo Assignment");
         System.out.println("=========================================");
 
-        GoodsBogie cylindricalBogie = new GoodsBogie("Cylindrical");
-        cylindricalBogie.assignCargo("Petroleum");
+        GoodsBogie cylindrical = new GoodsBogie("Cylindrical");
+        cylindrical.assignCargo("Petroleum");
 
         System.out.println();
 
-        GoodsBogie rectangularBogie = new GoodsBogie("Rectangular");
-        rectangularBogie.assignCargo("Petroleum");
+        GoodsBogie rectangular = new GoodsBogie("Rectangular");
+        rectangular.assignCargo("Petroleum");
 
         System.out.println("\nUC15 runtime handling completed...");
     }
