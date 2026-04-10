@@ -1,2 +1,33 @@
+
 public class TrainConsistManagementApp {
+
+    public static void main(String[] args) {
+        System.out.println("==========================================");
+        System.out.println(" UC20 - Exception Handling During Search ");
+        System.out.println("==========================================\n");
+
+        String[] bogieIds = {};
+
+        String searchId = "B6101";
+
+        if (bogieIds.length == 0) {
+            throw new IllegalStateException("No bogies available in train. Cannot perform search.");
+        }
+
+        boolean found = false;
+        for (String id : bogieIds) {
+            if (id.equals(searchId)) {
+                found = true;
+                break;
+            }
+        }
+
+        if (found) {
+            System.out.println("Bogie " + searchId + " found in the train.");
+        } else {
+            System.out.println("Bogie " + searchId + " not found in the train.");
+        }
+
+        System.out.println("\nUC20 execution completed...");
+    }
 }
